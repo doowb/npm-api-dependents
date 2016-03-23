@@ -23,12 +23,12 @@
   "dependencies": {
     "co": "^4.6.0",
     "extend-shallow": "^2.0.1",
-    "lazy-cache": "^1.0.3",
-    "npm-api": "^0.4.2"
+    "lazy-cache": "^1.0.3"
   },
   "devDependencies": {
     "gulp-format-md": "^0.1.7",
     "mocha": "*",
+    "npm-api": "^0.4.2",
     "should": "*"
   },
   "keywords": [],
