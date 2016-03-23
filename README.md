@@ -34,19 +34,51 @@ co(function* () {
 });
 ```
 
+## API
+
+### [.dependents](index.js#L46)
+
+Get the dependents for the current repo.
+
+**Params**
+
+* `options` **{Object}**: Options to handle returned results
+* `options.mapFn` **{Function}**: Optional map function to handle transforming the repo name into something else. Takes `(name, index, repos, options)` and called in the context of the [npm-api](https://github.com/doowb/npm-api) instance.
+* `returns` **{Promise}**: Returns an array of module names when promise resolves.
+
+**Example**
+
+```js
+var repo = npm.repo('micromatch');
+
+// returns a promise
+repo.dependents()
+  .then(function(repos) {
+    console.log(repos);
+  }, function(err) {
+    console.error(err);
+  });
+
+// use with co and generator functions
+co(function* () {
+  var repos = yield repo.dependents();
+  console.log(repos);
+});
+```
+
 ## Contributing
 
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/doowb/npm-api-dependents/issues/new).
 
 ## Building docs
 
-Generate readme and API documentation with [verb][]:
+Generate readme and API documentation with [verb](https://github.com/verbose/verb):
 
 ```sh
 $ npm install verb && npm run docs
 ```
 
-Or, if [verb][] is installed globally:
+Or, if [verb](https://github.com/verbose/verb) is installed globally:
 
 ```sh
 $ verb
