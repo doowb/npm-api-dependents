@@ -1,0 +1,51 @@
+{
+  "name": "npm-api-dependents",
+  "description": "npm-api plugin for getting module dependents.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/doowb/npm-api-dependents",
+  "author": "Brian Woodward (https://github.com/doowb)",
+  "repository": "doowb/npm-api-dependents",
+  "bugs": {
+    "url": "https://github.com/doowb/npm-api-dependents/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "utils.js"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "co": "^4.6.0",
+    "extend-shallow": "^2.0.1",
+    "lazy-cache": "^1.0.3"
+  },
+  "devDependencies": {
+    "gulp-format-md": "^0.1.7",
+    "mocha": "*",
+    "should": "*"
+  },
+  "keywords": [],
+  "verb": {
+    "run": true,
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "reflinks": [
+      "verb"
+    ],
+    "lint": {
+      "reflinks": true
+    }
+  }
+}
