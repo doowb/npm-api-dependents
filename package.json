@@ -31,7 +31,22 @@
     "npm-api": "^0.4.2",
     "should": "*"
   },
-  "keywords": [],
+  "keywords": [
+    "api",
+    "dependent",
+    "dependents",
+    "module",
+    "module-dependents",
+    "modules",
+    "npm",
+    "npm-api",
+    "package",
+    "package-dependents",
+    "packages",
+    "repo",
+    "repo-dependents",
+    "repos"
+  ],
   "verb": {
     "run": true,
     "toc": false,
