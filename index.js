@@ -45,7 +45,7 @@ module.exports = function(config) {
         });
         var transform = utils.through2.obj(function(obj, enc, cb) {
           var name = obj.key[1];
-          this.push(options.raw ? {name: name} : app.repo(name));
+          this.push(opts.raw ? {name: name} : app.repo(name));
           cb();
         });
         return stream.pipe(transform);
