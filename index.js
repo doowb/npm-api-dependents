@@ -30,7 +30,7 @@ module.exports = function(config) {
        * ```
        * @name .dependents
        * @param  {Object}  `options` Options to handle returned results
-       * @param  {Boolean} `options.raw` Optional. Set to `true` to receive objects of the form `{ name: 'module' }` instead of [`Repo`](https://github.com/doowb/npm-api#repo-1) objects.
+       * @param  {Boolean} `options.raw` Optional. Set to `true` to receive objects of the form `{ name: 'module' }` instead of [Repo](https://github.com/doowb/npm-api#repo-1) objects.
        * @return {Stream}  Returns a readable stream (object mode).
        * @api public
        */
