@@ -30,6 +30,7 @@ module.exports = function(config) {
        * ```
        * @name .dependents
        * @param  {Object}  `options` Options to handle returned results
+       * @param  {Boolean} `options.raw` Optional. Set to `true` to receive objects of the form `{ name: 'module' }` instead of [`Repo`](https://github.com/doowb/npm-api#repo-1) objects.
        * @return {Stream}  Returns a readable stream (object mode).
        * @api public
        */
@@ -42,9 +43,13 @@ module.exports = function(config) {
           startkey: JSON.stringify([this.name]),
           endkey: JSON.stringify([this.name, {}])
         });
-        var transform = utils.through2.obj(function (obj, enc, cb) {
+        var transform = utils.through2.obj(function(obj, enc, cb) {
           var dependent = obj.key[1];
-          this.push(app.repo(dependent));
+          if (options.raw) {
+            this.push({name: dependent});
+          } else {
+            this.push(app.repo(dependent));
+          }
           cb();
         });
         return stream.pipe(transform);
