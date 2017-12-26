@@ -44,12 +44,8 @@ module.exports = function(config) {
           endkey: JSON.stringify([this.name, {}])
         });
         var transform = utils.through2.obj(function(obj, enc, cb) {
-          var dependent = obj.key[1];
-          if (options.raw) {
-            this.push({name: dependent});
-          } else {
-            this.push(app.repo(dependent));
-          }
+          var name = obj.key[1];
+          this.push(options.raw ? {name: name} : app.repo(name));
           cb();
         });
         return stream.pipe(transform);
