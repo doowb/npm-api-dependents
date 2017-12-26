@@ -24,8 +24,8 @@ require = utils;
  * Lazily required module dependencies
  */
 
-require('co');
 require('extend-shallow', 'extend');
+require('through2');
 
 /**
  * Restore `require`
