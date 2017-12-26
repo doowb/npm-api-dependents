@@ -22,46 +22,32 @@ module.exports = function(config) {
        * ```js
        * var repo = npm.repo('micromatch');
        *
-       * // returns a promise
+       * // returns a readable stream
        * repo.dependents()
-       *   .then(function(repos) {
-       *     console.log(repos);
-       *   }, function(err) {
-       *     console.error(err);
+       *   .on('data', function(repo) {
+       *     console.log(repo);
        *   });
-       *
-       * // use with co and generator functions
-       * co(function* () {
-       *   var repos = yield repo.dependents();
-       *   console.log(repos);
-       * });
        * ```
        * @name .dependents
-       * @param  {Object}   `options` Options to handle returned results
-       * @param  {Function} `options.mapFn` Optional map function to handle transforming the repo name into something else. Takes `(name, index, repos, options)` and called in the context of the [npm-api][] instance.
-       * @return {Promise}  Returns an array of module names when promise resolves.
+       * @param  {Object}  `options` Options to handle returned results
+       * @return {Stream}  Returns a readable stream (object mode).
        * @api public
        */
 
       this.define('dependents', function(options) {
         var opts = utils.extend({}, options);
-        return utils.co(function* () {
-          var view = app.view('dependedUpon');
-          var results = yield view.query({
-            group_level: 2,
-            startkey: JSON.stringify([this.name]),
-            endkey: JSON.stringify([this.name, {}])
-          });
-
-          return results.map(function(result, i) {
-            var key = result.key[1];
-            if (typeof opts.mapFn === 'function') {
-              return opts.mapFn.call(app, key, i, results, options);
-            }
-            return key;
-          });
-
-        }.bind(this));
+        var view = app.view('dependedUpon');
+        var stream = view.stream({
+          group_level: 2,
+          startkey: JSON.stringify([this.name]),
+          endkey: JSON.stringify([this.name, {}])
+        });
+        var transform = utils.through2.obj(function (obj, enc, cb) {
+          var dependent = obj.key[1];
+          this.push(app.repo(dependent));
+          cb();
+        });
+        return stream.pipe(transform);
       });
     };
   };
