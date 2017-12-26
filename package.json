@@ -45,7 +45,8 @@
     "packages",
     "repo",
     "repo-dependents",
-    "repos"
+    "repos",
+    "stream"
   ],
   "verb": {
     "run": true,
