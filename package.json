@@ -1,7 +1,7 @@
 {
   "name": "npm-api-dependents",
   "description": "npm-api plugin for getting module dependents.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/doowb/npm-api-dependents",
   "author": "Brian Woodward (https://github.com/doowb)",
   "contributors": [
