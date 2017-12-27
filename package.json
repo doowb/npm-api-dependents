@@ -4,6 +4,10 @@
   "version": "0.1.0",
   "homepage": "https://github.com/doowb/npm-api-dependents",
   "author": "Brian Woodward (https://github.com/doowb)",
+  "contributors": [
+    "Brian Woodward (https://twitter.com/doowb)",
+    "Lars-Magnus Skog (https://github.com/ralphtheninja)"
+  ],
   "repository": "doowb/npm-api-dependents",
   "bugs": {
     "url": "https://github.com/doowb/npm-api-dependents/issues"
@@ -59,8 +63,8 @@
       "gulp-format-md"
     ],
     "reflinks": [
-      "verb",
-      "npm-api"
+      "npm-api",
+      "verb"
     ],
     "lint": {
       "reflinks": true
