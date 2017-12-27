@@ -30,10 +30,9 @@
     "through2": "^2.0.3"
   },
   "devDependencies": {
-    "gulp-format-md": "^0.1.7",
-    "mocha": "*",
-    "npm-api": "^0.4.2",
-    "should": "*"
+    "gulp-format-md": "^1.0.0",
+    "mocha": "3.5.3",
+    "npm-api": "^0.4.10"
   },
   "keywords": [
     "api",
